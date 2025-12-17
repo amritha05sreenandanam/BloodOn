@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Match Results - Blood Donation Alert System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/enhanced-animations.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Request Submitted Successfully</h1>
+            <p>Donors have been notified</p>
+        </div>
+
+        <div class="match-results">
+            <div class="match-card">
+                <div class="match-label">Nearby Compatible Donors</div>
+                <div class="match-count">{{ nearby_count }}</div>
+                <p style="color: var(--text-secondary); margin-top: 10px;">
+                    Donors in the same or nearby location have been notified
+                </p>
+            </div>
+
+            <div class="match-card">
+                <div class="match-label">Compatible Donors (Other Locations)</div>
+                <div class="match-count">{{ far_count }}</div>
+                <p style="color: var(--text-secondary); margin-top: 10px;">
+                    Additional compatible donors in other locations
+                </p>
+            </div>
+
+            <div style="background: #d4edda; padding: 20px; border-radius: 8px; margin-top: 30px; color: #155724;">
+                <h3 style="margin-bottom: 10px;">✅ Alerts Sent</h3>
+                <p>
+                    All matching donors have been notified via email and WhatsApp. 
+                    They will contact your hospital directly if they can help. 
+                    Please ensure your hospital contact information is accessible.
+                </p>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="/main" class="btn btn-primary">Main Page</a>
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+</body>
+</html>
+

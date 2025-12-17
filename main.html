@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page - Blood Donation Alert System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/enhanced-animations.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Blood Donation Network</h1>
+            <p>Real-time statistics of our donor community</p>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card total" data-aos="fade-up" data-aos-duration="800">
+                <div class="counter">
+                    <span class="counter-value">{{ stats.total_donors or 0 }}</span>
+                    <span class="counter-symbol">❤️</span>
+                </div>
+                <p>Lives Touched Through Donations</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 style="color: var(--primary-color); margin-bottom: 20px;">Blood Group Distribution</h2>
+            {% if stats.blood_group_stats %}
+            <div class="blood-stats">
+                {% for blood_group, count in stats.blood_group_stats.items() %}
+                <div class="blood-stat-item">
+                    <div class="blood-type">{{ blood_group }}</div>
+                    <div class="count">{{ count }} donor{{ 's' if count != 1 else '' }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p style="text-align: center; color: var(--text-secondary); padding: 20px;">
+                No donors registered yet. Be the first to register!
+            </p>
+            {% endif %}
+        </div>
+
+        <!-- Video Section with Caption -->
+        <div class="video-section" style="margin: 3rem 0;">
+            <div class="video-caption">
+                <h2>Every Drop Counts: Join Our Lifesaving Mission</h2>
+            </div>
+            <div class="video-container">
+                <video autoplay muted loop playsinline id="donationVideo">
+                    <source src="{{ url_for('static', filename='videos/animation.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 style="color: var(--primary-color); margin-bottom: 20px;">Location-wise Distribution</h2>
+            {% if stats.location_stats %}
+            <div class="location-stats">
+                {% for location, count in stats.location_stats.items() %}
+                <div class="location-item">
+                    <span class="location-name">{{ location }}</span>
+                    <span class="location-count">{{ count }} donor{{ 's' if count != 1 else '' }}</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p style="text-align: center; color: var(--text-secondary); padding: 20px;">
+                No location data available yet.
+            </p>
+            {% endif %}
+        </div>
+
+        <div class="nav-buttons">
+            <a href="/details" class="btn btn-secondary">Details</a>
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+</body>
+</html>
+

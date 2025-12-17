@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Request - Blood Donation Alert System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/enhanced-animations.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Blood Request Form</h1>
+            <p>Submit an urgent blood donation request</p>
+        </div>
+
+        <div id="alert" class="alert"></div>
+
+        <div class="form-container">
+            <form id="requesterForm">
+                <h2 style="color: var(--primary-color); margin-bottom: 20px;">Hospital Information</h2>
+                
+                <div class="form-group">
+                    <label for="hospital_name">Hospital Name <span class="required">*</span></label>
+                    <input type="text" id="hospital_name" name="hospital_name" required placeholder="Enter hospital name">
+                </div>
+
+                <div class="form-group">
+                    <label for="hospital_email">Hospital Email <span class="required">*</span></label>
+                    <input type="email" id="hospital_email" name="hospital_email" required placeholder="hospital@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="hospital_phone">Hospital Phone <span class="required">*</span></label>
+                    <input type="tel" id="hospital_phone" name="hospital_phone" required placeholder="+91 9876543210">
+                </div>
+
+                <div class="form-group">
+                    <label for="hospital_location">Hospital Location <span class="required">*</span></label>
+                    <input type="text" id="hospital_location" name="hospital_location" required placeholder="City, District (e.g., Alappuzha, Kerala)">
+                </div>
+
+                <h2 style="color: var(--primary-color); margin: 30px 0 20px 0;">Blood Request Details</h2>
+
+                <div class="form-group">
+                    <label for="required_blood_group">Required Blood Group <span class="required">*</span></label>
+                    <select id="required_blood_group" name="required_blood_group" required>
+                        <option value="">Select required blood group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="patient_details">Patient Details (Optional)</label>
+                    <textarea id="patient_details" name="patient_details" placeholder="Additional information about the patient or situation"></textarea>
+                    <small>This information will be shared with potential donors</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="urgency_level">Urgency Level</label>
+                    <select id="urgency_level" name="urgency_level">
+                        <option value="normal">Normal</option>
+                        <option value="urgent">Urgent</option>
+                        <option value="critical">Critical</option>
+                    </select>
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        Submit Request
+                    </button>
+                    <a href="/details" class="btn btn-secondary">Details</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/requester_form.js') }}"></script>
+</body>
+</html>
+

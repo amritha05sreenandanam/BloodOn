@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Registration - Blood Donation Alert System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/enhanced-animations.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Donor Registration</h1>
+            <p>Join our network of life-savers</p>
+        </div>
+
+        <div id="alert" class="alert"></div>
+
+        <div class="form-container">
+            <form id="donorForm">
+                <div class="form-group">
+                    <label for="name">Full Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="blood_group">Blood Group <span class="required">*</span></label>
+                    <select id="blood_group" name="blood_group" required>
+                        <option value="">Select your blood group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                    <small>This helps us match you with compatible requests</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    <small>We'll send alerts to this email</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+91 9876543210">
+                    <small>For WhatsApp notifications</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location <span class="required">*</span></label>
+                    <input type="text" id="location" name="location" required placeholder="City, District (e.g., Alappuzha, Kerala)">
+                    <small>Helps us find nearby requests</small>
+                </div>
+
+                <div class="btn-container">
+                    <button type="submit" class="btn btn-success" id="submitBtn">
+                        Confirm Registration
+                    </button>
+                    <a href="/details" class="btn btn-secondary">Details</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/donor_form.js') }}"></script>
+</body>
+</html>
+

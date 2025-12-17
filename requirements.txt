@@ -1,0 +1,8 @@
+Flask==3.0.0
+flask-cors==4.0.0
+python-dotenv==1.0.0
+twilio==8.10.0
+
+# Optional: MySQL connector (only needed if using MySQL)
+# mysql-connector-python==8.2.0
+

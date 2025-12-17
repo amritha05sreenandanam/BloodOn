@@ -1,0 +1,23 @@
+/* BACKUP: Original Color Palette
+   Use this file to restore original colors if needed */
+
+:root {
+    /* Original Colors - Backup */
+    --original-primary-color: #e63946;
+    --original-primary-light: #ff6b7a;
+    --original-primary-dark: #c1121f;
+    --original-secondary-color: #f1faee;
+    --original-accent-color: #457b9d;
+    --original-accent-light: #a8dadc;
+    --original-text-primary: #1d3557;
+    --original-text-secondary: #6c757d;
+    --original-success-color: #06d6a0;
+    --original-warning-color: #ffd166;
+    --original-background: #ffffff;
+    
+    /* Original Background Gradient */
+    --original-bg-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 25%, #2c5364 50%, #1a1a2e 75%, #16213e 100%);
+}
+
+/* To restore: Copy these values back to style.css :root section */
+

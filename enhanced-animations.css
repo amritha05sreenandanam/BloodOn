@@ -1,0 +1,420 @@
+/* Enhanced Animations - Standout Effects */
+
+/* Background animations removed per user request */
+/* Earth Globe and Floating Particles disabled */
+
+/* Subtle micro-interactions (non-3D) */
+.stat-card,
+.match-card,
+.blood-stat-item {
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.stat-card:hover,
+.match-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+        0 16px 35px rgba(43, 43, 43, 0.12),
+        0 8px 20px rgba(199, 54, 63, 0.10);
+}
+
+.blood-stat-item:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(43, 43, 43, 0.10);
+}
+
+.location-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-left-color 0.3s ease;
+}
+
+.location-item:hover {
+    transform: translateX(6px);
+    box-shadow: 0 12px 30px rgba(43, 43, 43, 0.10);
+}
+
+/* Soft pulse for badges and counts */
+.location-count,
+.match-count,
+.stat-card h3 {
+    animation: softPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes softPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.04); opacity: 0.95; }
+}
+
+/* Soft lift on buttons */
+.btn {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow:
+        0 12px 24px rgba(199, 54, 63, 0.18),
+        0 6px 12px rgba(43, 43, 43, 0.08);
+}
+
+.btn:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* Enhanced Button Animations */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+.btn:hover {
+    transform: translateY(-8px) scale(1.05) rotateX(5deg);
+    box-shadow: 
+        0 15px 40px rgba(199, 54, 63, 0.4),
+        0 5px 15px rgba(43, 43, 43, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Video Section */
+.video-section {
+    margin: 3rem 0;
+    text-align: center;
+    position: relative;
+}
+
+.video-caption {
+    margin-bottom: 1.5rem;
+}
+
+.video-caption h2 {
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+    position: relative;
+}
+
+.video-caption h2::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    bottom: 0;
+    left: 25%;
+    background: linear-gradient(90deg, #dc3545, #ff6b6b);
+    border-radius: 2px;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.video-container video {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+/* Impact Counter */
+.impact-counter {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 1.5rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    min-width: 300px;
+    text-align: center;
+}
+
+.impact-counter .counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.impact-counter .counter-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #dc3545;
+    line-height: 1;
+}
+
+.impact-counter .counter-symbol {
+    font-size: 2rem;
+    margin-left: 0.5rem;
+    line-height: 1;
+}
+
+.impact-counter p {
+    margin: 0;
+    color: #666;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .impact-counter {
+        position: relative;
+        bottom: 0;
+        margin: -20px auto 0;
+        max-width: 90%;
+    }
+    
+    .video-section {
+        margin-bottom: 4rem;
+    }
+}
+
+/* Card Hover Effects */
+.stat-card, .match-card, .blood-stat-item {
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.02);
+}
+
+.stat-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.02);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05),
+                0 4px 6px -2px rgba(0, 0, 0, 0.03);
+}
+
+/* Text Glow Effects */
+.header h1 {
+    text-shadow: 
+        0 0 20px rgba(199, 54, 63, 0.3),
+        0 0 40px rgba(199, 54, 63, 0.2),
+        0 0 60px rgba(199, 54, 63, 0.1);
+    animation: textGlow 3s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 
+            0 0 20px rgba(199, 54, 63, 0.3),
+            0 0 40px rgba(199, 54, 63, 0.2),
+            0 0 60px rgba(199, 54, 63, 0.1);
+    }
+    50% {
+        text-shadow: 
+            0 0 30px rgba(199, 54, 63, 0.5),
+            0 0 60px rgba(199, 54, 63, 0.3),
+            0 0 90px rgba(199, 54, 63, 0.2);
+    }
+}
+
+/* Floating Elements */
+.floating-element {
+    position: absolute;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+/* Number Counter Animation */
+.stat-card h3,
+.match-count,
+.impact-metric h3 {
+    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: numberPulse 2s ease-in-out infinite;
+}
+
+@keyframes numberPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Form Area - Minimal Animations */
+.form-container {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.form-group {
+    transition: transform 0.2s ease;
+}
+
+.form-group:focus-within {
+    transform: translateX(5px);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    animation: inputFocus 0.3s ease;
+}
+
+@keyframes inputFocus {
+    0% {
+        box-shadow: 0 0 0 0 rgba(199, 54, 63, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 4px rgba(199, 54, 63, 0.1);
+    }
+}
+
+/* Page Load Animation */
+@keyframes pageLoad {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.container {
+    animation: pageLoad 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stagger Animation for Cards */
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Magnetic Effect on Buttons */
+.btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover {
+    filter: brightness(1.1);
+}
+
+/* Gradient Border Animation */
+.stat-card {
+    position: relative;
+    background-clip: padding-box;
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #C7363F, #5F8D6A, #D4A373, #C7363F);
+    background-size: 400% 400%;
+    border-radius: inherit;
+    z-index: -1;
+    animation: gradientBorder 3s ease infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.stat-card:hover::after {
+    opacity: 1;
+}
+
+@keyframes gradientBorder {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Background animations removed */
+

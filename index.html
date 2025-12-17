@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Alert System - Welcome</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/enhanced-animations.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🩸 Blood Donation Alert System</h1>
+            <p>Connecting lives, saving lives</p>
+        </div>
+
+        <div class="btn-container">
+            <div class="btn-row">
+                <a href="/donor-form" class="btn btn-primary">Donor Login</a>
+                <a href="/requester-form" class="btn btn-primary">Requester Login</a>
+            </div>
+            <div class="btn-row">
+                <a href="/main" class="btn btn-secondary">View Main Page</a>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; color: var(--text-secondary);">
+            <p>Choose your role to get started</p>
+            <p style="font-size: 0.9rem; margin-top: 10px;">
+                Donors can register to help those in need.<br>
+                Requesters can submit urgent blood requests.
+            </p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+</body>
+</html>
+
