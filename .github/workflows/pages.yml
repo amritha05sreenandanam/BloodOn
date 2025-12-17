@@ -1,0 +1,65 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Trigger the workflow on push to main branch
+  push:
+    branches: [ main, master ]
+  # Allow manual triggering of the workflow
+  workflow_dispatch:
+
+# Set the permissions for the GITHUB_TOKEN
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for tags and branches
+    
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          cache: 'pip'
+    
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+    
+      # Add your build steps here if needed
+      # Example for a Flask app:
+      # - name: Build static files
+      #   run: |
+      #     # Add your build commands here
+    
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
+    
+      - name: Upload artifact
+        uses: actions/upload-pages-asset@v2
+        with:
+          # Path to the directory containing your built files
+          # Update this path according to your project structure
+          path: './'
+    
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
